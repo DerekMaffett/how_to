@@ -1,0 +1,16 @@
+<h1 class='text-center'>Behold This List</h1>
+
+<p><%= @list.name %></p>
+<ul>
+  <% @steps.each do |step| %>
+    <li><%= link_to step.name, list_step_path(@list, step) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Step', new_list_step_path(@list) %> |
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Destroy',
+  @list,
+  method: :delete,
+  data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', lists_path %>

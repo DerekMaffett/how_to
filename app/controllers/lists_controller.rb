@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-
   # GET /lists
   def index
     @lists = List.all
@@ -50,8 +49,8 @@ class ListsController < ApplicationController
 
   private
 
-    # Only allow a trusted parameter "white list" through.
-    def list_params
-      params.require(:list).permit(:name, :description)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def list_params
+    params.require(:list).permit(:name, :description)
+  end
 end

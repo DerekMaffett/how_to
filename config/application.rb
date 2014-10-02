@@ -22,6 +22,5 @@ module HowTo
 
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
-
   end
 end

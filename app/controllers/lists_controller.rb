@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists
   def index
@@ -8,6 +7,8 @@ class ListsController < ApplicationController
 
   # GET /lists/1
   def show
+    @list = List.find(params[:id])
+    @steps = @list.steps
   end
 
   # GET /lists/new
@@ -17,12 +18,12 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
+    @list = List.find(params[:id])
   end
 
   # POST /lists
   def create
     @list = List.new(list_params)
-
     if @list.save
       redirect_to @list, notice: 'List was successfully created.'
     else
@@ -32,6 +33,7 @@ class ListsController < ApplicationController
 
   # PATCH/PUT /lists/1
   def update
+    @list = List.find(params[:id])
     if @list.update(list_params)
       redirect_to @list, notice: 'List was successfully updated.'
     else
@@ -41,15 +43,12 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1
   def destroy
+    @list = List.find(params[:id])
     @list.destroy
     redirect_to lists_url, notice: 'List was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_list
-      @list = List.find(params[:id])
-    end
 
     # Only allow a trusted parameter "white list" through.
     def list_params

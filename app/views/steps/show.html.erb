@@ -1,0 +1,10 @@
+<h1 class='text-center'>Behold This Step</h1>
+
+<p><%= @step.name %></p>
+
+<%= link_to 'Edit', edit_list_step_path(@list, @step) %> |
+<%= link_to 'Destroy',
+  [@list, @step],
+  method: :delete,
+  data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', list_path(@list) %>
